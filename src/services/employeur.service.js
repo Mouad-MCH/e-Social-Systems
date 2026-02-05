@@ -1,11 +1,12 @@
 import Employeur from "../models/Employeur.js";
 import { employeurs } from "../data/employeurs.js";
+import { generateId } from "../utils/helpers.js";
 
 
 // function add an emplayeur 
-export const createEmployeur = (id, raisonSociale, secteur) => {
+export const createEmployeur = (raisonSociale, secteur) => {
 
-  const employ = new Employeur(id, raisonSociale, secteur);
+  const employ = new Employeur(generateId(), raisonSociale, secteur);
   employeurs.push(employ);
   return employ;
 }
@@ -22,13 +23,14 @@ export const getEmployeur = () => {
 
 export const linkAssureToEmployeur = (emplayeurId, assureId) => {
 
-  const em = employeurs.find(e => e.id == emplayeurId);
+  const em = employeurs.find(e => e.id === emplayeurId);
 
   if(!em) {
     return "Employeurs not fund"
   }
 
   if(!em.assures.includes(assureId)) em.assures.push(assureId);
+  else return "is alridy exist";
 }
 
 
