@@ -1,1 +1,60 @@
 @import "tailwindcss";
+
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+.container{
+    background-color: #ffff;
+   width: 20%;
+   height:100vh;
+   padding-top: 20px;
+   border: 1px solid #593333;
+}
+.titre{
+   padding-bottom: 25px;
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   border-bottom: 1px solid rgb(175, 171, 171);
+   width: 100%;
+   padding-left: 20px;
+}
+
+.spann{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-top: 30px;
+   gap: 1rem;
+}
+
+.spann span{
+    padding: 12px;
+width: 95%;
+
+}
+.spann span img{
+  margin-right: 15px;
+}
+.spann span i{
+  margin-right: 15px;
+}
+ span:hover{
+    cursor: pointer;
+    background-color: #f4f7fa;
+    border-radius: 10px;
+}
+span:active{
+     cursor: pointer;
+    background-color: #527EED;
+    color: white;
+    border-radius: 10px;
+}
+
+
+@media (max-width=500px){
+
+}
