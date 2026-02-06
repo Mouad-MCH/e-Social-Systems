@@ -4,18 +4,20 @@
     box-sizing: border-box;
 }
 .titre{
-    margin-left: 25%;
+    margin-left: 20%;
     margin-top: 35px;
-    width: 70%;
+    width: 78%;
     display: flex;
     justify-content: space-between;
 }
 .titre button{
-    width: 20%;
-    background-color: rgb(64, 64, 244);
+    width: 15%;
+    padding: 10px;
+    background-color: rgb(97, 97, 243);
     color: aliceblue;
     border-radius: 10px;
     font-size: 15px;
+    border: none;
 }
 .titre button:hover{
     cursor: pointer;
@@ -25,13 +27,15 @@
      margin: 30px 2% 10px 340px;
      padding: 1%;
     text-align: center;
-    border: 1px solid black;
+  
+
+    border: 1px solid rgb(189, 189, 189);
     border-radius: 10px;
   
 }
 .table table {
     width: 100%;
-    
+    border-collapse:collapse ;
 }
 .table table tr td,th {
   padding: 1%;
@@ -43,9 +47,10 @@
  padding: 10px; 
 }
 .table table tr td button{
-   padding: 5px;
+   padding: 7px;
    border-radius: 10px;
-   background-color: #DFDFDF;
+   background-color: rgb(211, 217, 224);
+   border: none;
 }
 .table table tr td button:hover{
     cursor:pointer;
