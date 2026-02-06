@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.titre{
+    margin-left: 25%;
+    margin-top: 35px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.titre button{
+    width: 20%;
+    background-color: rgb(64, 64, 244);
+    color: aliceblue;
+    border-radius: 10px;
+    font-size: 15px;
+}
+.titre button:hover{
+    cursor: pointer;
+    background-color:blue ;
+}
+.table{
+     margin: 30px 2% 10px 340px;
+     padding: 1%;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+  
+}
+.table table {
+    width: 100%;
+    
+}
+.table table tr td,th {
+  padding: 1%;
+     border-top:1px solid rgb(217, 216, 216)  ;
+ 
+}
+.table table tr th {
+ background-color: rgb(211, 217, 224);
+ padding: 10px; 
+}
+.table table tr td button{
+   padding: 5px;
+   border-radius: 10px;
+   background-color: #DFDFDF;
+}
+.table table tr td button:hover{
+    cursor:pointer;
+    background-color: #acabab;
+}
