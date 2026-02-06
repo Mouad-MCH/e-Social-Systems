@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+
+@theme {
+    --color-primary: #2563EB;
+    --color-primary-hover: #2845D6;
+    --color-gray-backgound: #F5F7FB;
+    --color-success: #16A34A;
+    --color-danger: #DC2626;
+    --color-card: #FFFFFF;
+    --color-text: #111827;
+    --color-sidebar-bg: #ffffff;
+}
+
+
+@layer base {
+    .main {
+        @apply p-5 pt-10;
+    }
+}
+
+
+@layer components {
+    .main_header {
+        @apply flex items-center justify-between mb-10;
+
+        & h1 {
+            @apply text-2xl font-bold;
+        }
+
+        & .main_header_btn {
+            @apply bg-primary px-4 py-4 rounded-lg text-white font-medium cursor-pointer hover:bg-primary-hover transition-all duration-300;
+        }
+    }
+
+    .main_bottom {
+        @apply bg-white w-full h-fit rounded-lg shadow-sm ring ring-gray-300/5 p-5;
+    }
+
+
+    table {
+
+        
+        & thead {
+            @apply bg-gray-backgound h-15;
+        }
+
+        & tr:not(& thead tr) {
+            @apply text-center h-15 hover:bg-gray-300/10 transition-all duration-300 border-t border-gray-300;
+
+            & .detail {
+                @apply bg-gray-300 px-3 py-2 rounded-full hover:bg-gray-200 cursor-pointer transition-all duration-300;
+            }
+        }
+    }
+
+    .modal {
+        @apply  absolute w-200 h-100 px-5 py-20 ring ring-gray-500/5 bg-white rounded-lg left-[50%] top-[50%] translate-[-50%] flex flex-col justify-center gap-10;
+
+        & label {
+            @apply block;
+        }
+
+        & input, #secteur {
+            @apply w-full h-10 rounded-lg ring px-5 ring-gray-300 outline-0;
+        }
+
+        & .buttons {
+            @apply flex items-center gap-5 w-full justify-end;
+
+            & button {
+                @apply px-5 py-3 rounded-lg font-bold cursor-pointer;
+            }
+
+            & .anule_btn {
+                @apply bg-gray-300 text-text hover:bg-gray-400;
+            }
+
+            & .ajoute_btn {
+                @apply bg-primary text-white hover:bg-primary-hover;
+            }
+        }
+    }
+
+    .flaux {
+        @apply absolute w-full h-full bg-black opacity-50;
+    }
+}
