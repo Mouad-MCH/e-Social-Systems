@@ -3,8 +3,34 @@ import { declarations } from "../data/declaration.js";
 import { generateId } from "../utils/helpers.js";
 import { calculerCotisationTotale, calculerCotisationSalariale, calculerCotisationPatronale } from "./cotisation.service.js";
 import { calculerTotalAvecPenalite } from "./penalty.service.js";
+import { validerMois, validerDate, validerSalaire } from "../utils/validators.js";
 
 export const creerDeclaration = (employeurId, mois, salaires, dateDeclaration) => {
+    if(!employeurId) {
+        return { erreur: "Employeur requis" };
+    }
+
+    const validationMois = validerMois(mois);
+    if(!validationMois.valide) {
+        return { erreur: validationMois.erreur };
+    }
+
+    const validationDate = validerDate(dateDeclaration);
+    if(!validationDate.valide) {
+        return { erreur: validationDate.erreur };
+    }
+
+    if(!Array.isArray(salaires) || salaires.length === 0) {
+        return { erreur: "Salaires requis" };
+    }
+
+    for(let salaire of salaires) {
+        const validationSalaire = validerSalaire(salaire);
+        if(!validationSalaire.valide) {
+            return { erreur: validationSalaire.erreur };
+        }
+    }
+
     const existe = declarations.find(d => d.employeurId === employeurId && d.month === mois);
     if(existe) {
         return { erreur: "declaration deja existante" };
