@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/assets/styles/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="src/assets/styles/employeur.css">
+    <title>Déclarations</title>
+</head>
+<body>
+
+    <div class="body_sidebar">
+
+        <div class="flaux hidden"></div>
+
+      <div class="sidebar">
+         <div class="sidebar_header">
+          <div class="logo">
+            <img src="" alt="">
+          </div>
+          <div class="logo_name">
+            <h1>e-Social Systems</h1>
+            <p>Système de Gestion <br> des Cotisations Sociales</p>
+          </div>
+         </div>
+
+         <div class="sidebar-bottom">
+          <nav>
+            <a href="/dashboard.html">
+              <i class="fa-solid fa-table-columns"></i>
+              Tableau de bord
+            </a>
+
+            <a href="/employeur.html">
+              <i class="fa-regular fa-square-full"></i>
+              Employeur
+            </a>
+
+            <a href="/assures.html">
+              <i class="fa-solid fa-users"></i>
+              Assurés
+            </a>
+
+            <a href="/declarations.html" class="active">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              Déclarations
+            </a>
+
+            <a href="/dorits.html">
+              <i class="fa-solid fa-circle-check"></i>
+              Droits Sociaux
+            </a>
+
+            <a href="/statistique.html">
+              <i class="fa-solid fa-chart-simple"></i>
+              Statistiques
+            </a>
+
+          </nav>
+         </div>
+
+      </div>
+
+      <div class="main">
+
+        <div class="modal hidden">
+            <div>
+                <label for="employeur">Employeur <span class="text-red-500">*</span></label>
+                <select name="employeur" id="employeur">
+                    <option value="">Select</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="mois">Mois (YYYY-MM) <span class="text-red-500">*</span></label>
+                <input type="text" id="mois" placeholder="2026-01">
+            </div>
+
+            <div>
+                <label for="salaires">Salaires (séparés par virgule) <span class="text-red-500">*</span></label>
+                <input type="text" id="salaires" placeholder="5000, 6000, 4500">
+            </div>
+
+            <div>
+                <label for="dateDeclaration">Date de Déclaration <span class="text-red-500">*</span></label>
+                <input type="date" id="dateDeclaration">
+            </div>
+
+            <div class="buttons">
+                <button class="anule_btn">Annuler</button>
+                <button class="ajoute_btn">Ajouter</button>
+            </div>
+        </div>
+
+        <div class="main_header">
+            <h1>Gestion des Déclarations</h1>
+            <button class="main_header_btn">
+                <i class="fa-solid fa-plus"></i>
+                Ajouter une déclaration
+            </button>
+        </div>
+
+        <div class="main_bottom">
+            <table class="w-full">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employeur</th>
+                        <th>Mois</th>
+                        <th>Nb Salariés</th>
+                        <th>Total Cotisations</th>
+                        <th>Pénalité</th>
+                        <th>Total à Payer</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+      </div>
+    </div>
+
+    <script type="module" src="src/ui/declarations.ui.js"></script>
+</body>
+</html>
