@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SideBar</title>
+    <link rel="stylesheet" href="src/assets/styles/statistique.css">
+    <script src="https://cdn.tailwindcss.com"></script><!-- to apply color properties on texts --->
+    <link rel="stylesheet" href="src/assets/styles/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+</head>
+<body>
+
+<div class="body_sidebar">
+    <div class="sidebar">
+        <!-- sidebar Header -->
+        <div class="sidebar_header">
+            <div class="logo">
+                <img src="" alt="">
+            </div>
+            <div class="logo_name">
+                <h1>e-Social Systems</h1>
+                <p>Système de Gestion <br> des Cotisations Sociales</p>
+            </div>
+        </div>
+
+        <!-- Sidebar Bottom -->
+        <div class="sidebar-bottom">
+      <nav>
+        <a href="/dashboard.html">
+          <i class="fa-solid fa-table-columns"></i>
+          Tableau de bord
+        </a>
+
+        <a href="/employeur.html">
+          <i class="fa-regular fa-square-full"></i>
+          Employeur
+        </a>
+
+        <a href="/assures.html">
+          <i class="fa-solid fa-users"></i>
+          Assurés
+        </a>
+
+        <a href="/declarations.html">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          Déclarations
+        </a>
+
+        <a href="/dorits.html">
+          <i class="fa-solid fa-circle-check"></i>
+          Droits Sociaux
+        </a>
+
+        <a href="/statistique.html" class="active">
+          <i class="fa-solid fa-chart-simple"></i>
+          Statistiques
+        </a>
+        
+      </nav>
+     </div>
+
+    </div>
+
+    <div class="main p-5">
+        <!-- Start Main Header -->
+        <div class="main_statistiques">
+            <h1 class="text-2xl font-bold">Statistiques Globales</h1>
+    </div>
+
+    <!-- cards -->
+    <div class="mx-auto mt-2 grid max-w-4xl grid-cols-1 gap-x-8 gap-y-6 sm:mt-5 sm:pt-2 lg:mx-0 lg:max-w-none lg:grid-cols-2 mb-10">
+        <!-- Card 1 -->
+        <article class="flex w-full flex-col items-start justify-between mr-4 px-4">
+            <div class="relative flex items-center gap-x-5 h-30 w-full bg-gray-200 p-4 rounded-lg shadow-md">
+                <div class="text-sm/6">
+                    <p class="font-semibold text-black text-lg">
+                        <a href="#">
+                            <span class="absolute inset-0"></span>
+                            Montant Total des Cotisations
+                        </a>
+                    </p>
+                    <p class="text-blue-500 font-bold text-lg" id="montant_ttl_cotisation"></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="flex w-full flex-col items-start justify-between ml-4 px-4">
+            <div class="relative flex items-center gap-x-5 h-30 w-full bg-gray-200 p-4 rounded-lg shadow-md">
+                <div class="text-sm/6">
+                    <p class="font-semibold text-black text-lg">
+                        <a href="#">
+                            <span class="absolute inset-0"></span>
+                            Salaire Moyen Déclaré
+                        </a>
+                    </p>
+                    <p class="text-blue-500 font-bold text-lg" id="sal_moy_declarer"></p>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- table -->
+     <div class="main_bottom">
+        <p class="text-gray-500 font-semibold text-s mt-3 mb-6 px-2">Top 5 Employeurs par Volume de Cotisations</p>
+            <table class="w-full">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employeur</th>
+                        <th>Secteur</th>
+                        <th>Montant Total</th>
+                        <th>Nombres d'Employés</th>
+                    </tr>
+                </thead>
+                <!-- Start Tbody -->
+                <tbody>
+                    <!-- <tr>
+                        <td>1</td>
+                        <td>MCH</td>
+                        <td>BTP</td>
+                        <td>2</td>
+                        <td>
+                            <button class="detail">Détails</button>
+                        </td>
+                    </tr> -->
+                </tbody>
+                <!-- End Tbody -->
+            </table>
+        </div>
+</div>
+
+</body>
+</html>
