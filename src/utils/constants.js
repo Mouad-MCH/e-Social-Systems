@@ -1,0 +1,9 @@
+export const TAUX_SALARIE = 0.0448;
+export const TAUX_PATRONAL = 0.1601;
+export const PLAFOND_COTISATION = 6000;
+export const TAUX_PENALITE_BASE = 0.01;
+export const TAUX_PENALITE_MAX = 0.10;
+export const JOUR_ECHEANCE = 10;
+export const SEUIL_SALAIRE_ANORMAL = 2;
+export const JOURS_VALIDATION_PAR_MOIS = 26;
+export const JOURS_MIN_ELIGIBILITE = 54;

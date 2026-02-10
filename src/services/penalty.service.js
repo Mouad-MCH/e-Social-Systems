@@ -1,8 +1,8 @@
+import { JOUR_ECHEANCE, TAUX_PENALITE_BASE, TAUX_PENALITE_MAX } from "../utils/constants.js";
 
-// calculer jours de retard
 export const calculerJoursRetard = (dateDeclaration, mois) => {
     const [annee, moisNum] = mois.split('-');
-    const dateEcheance = new Date(annee, moisNum, 10);
+    const dateEcheance = new Date(annee, moisNum, JOUR_ECHEANCE);
     const dateDecl = new Date(dateDeclaration);
 
     const diff = dateDecl - dateEcheance;
@@ -11,21 +11,17 @@ export const calculerJoursRetard = (dateDeclaration, mois) => {
     return jours > 0 ? jours : 0;
 };
 
-
-// calculer penalite de retard
 export const calculerPenalite = (montantCotisation, joursRetard) => {
     if(joursRetard <= 0) return 0;
 
     const moisRetard = Math.ceil(joursRetard / 30);
-    const tauxPenalite = Math.min(moisRetard * 0.01, 0.10);
+    const tauxPenalite = Math.min(moisRetard * TAUX_PENALITE_BASE, TAUX_PENALITE_MAX);
 
     return montantCotisation * tauxPenalite;
 };
 
-
-// fonction calculer total avec penalite
 export const calculerTotalAvecPenalite = (montantCotisation, dateDeclaration, mois) => {
-    const joursRetard = calculerJoursRetard(dateDeclaration,mois);
+    const joursRetard = calculerJoursRetard(dateDeclaration, mois);
     const penalite = calculerPenalite(montantCotisation, joursRetard);
 
     return {

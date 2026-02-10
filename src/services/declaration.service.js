@@ -1,12 +1,36 @@
 import Declaration from "../models/Declaration.js";
 import { declarations } from "../data/declaration.js";
 import { generateId } from "../utils/helpers.js";
+import { calculerCotisationTotale, calculerCotisationSalariale, calculerCotisationPatronale } from "./cotisation.service.js";
+import { calculerTotalAvecPenalite } from "./penalty.service.js";
+import { validerMois, validerDate, validerSalaire } from "../utils/validators.js";
 
-
-// fonction pour creer declaration
 export const creerDeclaration = (employeurId, mois, salaires, dateDeclaration) => {
+    if(!employeurId) {
+        return { erreur: "Employeur requis" };
+    }
 
-    // verifier si declaration existe deja
+    const validationMois = validerMois(mois);
+    if(!validationMois.valide) {
+        return { erreur: validationMois.erreur };
+    }
+
+    const validationDate = validerDate(dateDeclaration);
+    if(!validationDate.valide) {
+        return { erreur: validationDate.erreur };
+    }
+
+    if(!Array.isArray(salaires) || salaires.length === 0) {
+        return { erreur: "Salaires requis" };
+    }
+
+    for(let salaire of salaires) {
+        const validationSalaire = validerSalaire(salaire);
+        if(!validationSalaire.valide) {
+            return { erreur: validationSalaire.erreur };
+        }
+    }
+
     const existe = declarations.find(d => d.employeurId === employeurId && d.month === mois);
     if(existe) {
         return { erreur: "declaration deja existante" };
@@ -17,20 +41,15 @@ export const creerDeclaration = (employeurId, mois, salaires, dateDeclaration) =
     return declaration;
 };
 
-
-// fonction obtenir toutes declarations
 export const obtenirDeclarations = () => {
     return declarations;
 };
 
-
-// obtenir historique par employeur
 export const obtenirHistorique = (employeurId) => {
     return declarations.filter(d => d.employeurId === employeurId);
 };
 
-// filtrer declarations par periode
-export const filtrerParPeriode = (annee,mois = null) => {
+export const filtrerParPeriode = (annee, mois = null) => {
     return declarations.filter(d => {
         const [a, m] = d.month.split('-');
         if(mois) {
@@ -38,4 +57,75 @@ export const filtrerParPeriode = (annee,mois = null) => {
         }
         return a === annee;
     });
+};
+
+export const calculerTotalDeclaration = (declarationId) => {
+    const declaration = declarations.find(d => d.id === declarationId);
+    if(!declaration) return { erreur: "Declaration introuvable" };
+
+    const montantCotisations = declaration.salaries.reduce((sum, sal) =>
+        sum + calculerCotisationTotale(sal), 0
+    );
+
+    const resultat = calculerTotalAvecPenalite(
+        montantCotisations,
+        declaration.declaredAt,
+        declaration.month
+    );
+
+    return {
+        declarationId: declaration.id,
+        employeurId: declaration.employeurId,
+        mois: declaration.month,
+        montantCotisations: resultat.montantBase,
+        penalite: resultat.penalite,
+        joursRetard: resultat.joursRetard,
+        totalAPayer: resultat.total
+    };
+};
+
+export const genererRecapitulatif = (declarationId) => {
+    const declaration = declarations.find(d => d.id === declarationId);
+    if(!declaration) return { erreur: "Declaration introuvable" };
+
+    const detailsSalaries = declaration.salaries.map(salaire => ({
+        salaire: salaire,
+        cotisationSalariale: calculerCotisationSalariale(salaire),
+        cotisationPatronale: calculerCotisationPatronale(salaire),
+        cotisationTotale: calculerCotisationTotale(salaire)
+    }));
+
+    const montantTotal = detailsSalaries.reduce((sum, d) => sum + d.cotisationTotale, 0);
+    const resultatPenalite = calculerTotalAvecPenalite(
+        montantTotal,
+        declaration.declaredAt,
+        declaration.month
+    );
+
+    return {
+        declarationId: declaration.id,
+        employeurId: declaration.employeurId,
+        mois: declaration.month,
+        dateDeclaration: declaration.declaredAt,
+        nombreSalaries: declaration.salaries.length,
+        detailsSalaries: detailsSalaries,
+        montantCotisations: montantTotal,
+        penalite: resultatPenalite.penalite,
+        joursRetard: resultatPenalite.joursRetard,
+        totalAPayer: resultatPenalite.total
+    };
+};
+
+export const obtenirTotalParEmployeur = (employeurId) => {
+    const declarationsEmployeur = declarations.filter(d => d.employeurId === employeurId);
+
+    if(declarationsEmployeur.length === 0) return 0;
+
+    return declarationsEmployeur.reduce((total, decl) => {
+        const montantCotisations = decl.salaries.reduce((sum, sal) =>
+            sum + calculerCotisationTotale(sal), 0
+        );
+        const resultat = calculerTotalAvecPenalite(montantCotisations, decl.declaredAt, decl.month);
+        return total + resultat.total;
+    }, 0);
 };

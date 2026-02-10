@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+
+@theme {
+    --color-primary: #2563EB;
+    --color-primary-hover: #2845D6;
+    --color-gray-backgound: #F5F7FB;
+    --color-success: #16A34A;
+    --color-danger: #DC2626;
+    --color-card: #FFFFFF;
+    --color-text: #111827;
+    --color-sidebar-bg: #ffffff;
+}
+
+
+@layer base {
+    .main {
+        @apply p-5 pt-10;
+    }
+}
+
+
+@layer components {
+    .main_dashboard {
+        @apply flex items-center justify-between mb-10 mt-6;
+
+        & h1 {
+            @apply text-2xl font-bold;
+        }
+    }
+
+}

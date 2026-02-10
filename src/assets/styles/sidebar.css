@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #2563EB;
+    --color-gray-backgound: #F5F7FB;
+    --color-success: #16A34A;
+    --color-danger: #DC2626;
+    --color-card: #FFFFFF;
+    --color-text: #111827;
+    --color-sidebar-bg: #ffffff;
+}
+
+
+@layer base {
+    .body_sidebar {
+        @apply bg-gray-backgound grid grid-cols-[auto_1fr] min-h-dvh;
+    }
+}
+
+@layer components {
+
+    .sidebar {
+        @apply  w-70 h-full bg-sidebar-bg shadow-xl p-5;
+
+        & .sidebar_header {
+            @apply flex items-center gap-2 mb-10 pb-10 border-b border-gray-400 cursor-pointer;
+
+            & .logo {
+                @apply bg-red-200 w-15 h-15 rounded-lg overflow-hidden;
+
+                & img {
+                    @apply w-full h-full;
+                }
+            }
+
+            & .logo_name {
+                & h1 {
+                    @apply font-bold text-xl;
+                }
+                & p {
+                    @apply text-gray-400 text-sm;
+                }
+            }
+        }
+
+
+        & .sidebar-bottom {
+            & nav {
+                @apply flex flex-col gap-6;
+
+                & a {
+                    @apply font-medium text-lg text-text p-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 flex items-center;
+
+                    & i {
+                        @apply mr-4 text-2xl;
+                    }
+                }
+
+
+                & a.active {
+                    @apply text-white bg-primary;
+                }
+            }
+        }
+
+    }
+
+}
+
+
+@utility flex-center {
+    @apply flex items-center justify-center;
+}
+
