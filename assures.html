@@ -64,54 +64,119 @@
   <div class="main p-5">
     <div class="titre">
       <h1>Gestion des Assurés</h1>
-      <button> + Ajouter un assures</button>
+      <button id="ajouter">+ Ajouter un assures</button>
     </div>
     <div class="table">
       <table>
-        <tr>
-          <th>ID</th>
-          <th>Nom</th>
-          <th>Employeur</th>
-          <th>Salaire Mensuel</th>
-          <th>Action</th>
-        </tr>
-
-        <tr>
-          <td>1</td>
-          <td>Mohammed Alami</td>
-          <td>Tech Solutions SARL</td>
-          <td>8 000,00 DH</td>
-          <td><button>Modifier le Salaire</button></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Fatima Zahra Bennani</td>
-          <td>Tech Solutions SARL</td>
-          <td>6 500,00 DH</td>
-          <td><button>Modifier le Salaire</button></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Ahmed Tazi</td>
-          <td>Construction BTP</td>
-          <td>12 000,00 DH</td>
-          <td><button>Modifier le Salaire</button></td>
-        </tr>
-         <tr>
-          <td>4</td>
-          <td>Khadija Mansouri</td>
-          <td>Construction BTP</td>
-          <td>5 500,00 DH</td>
-          <td><button>Modifier le Salaire</button></td>
-        </tr>
-         <tr>
-          <td>5</td>
-          <td>Youssef Idrissi</td>
-          <td>	Services Consulting</td>
-          <td>7 000,00 DH</td>
-          <td><button>Modifier le Salaire</button></td>
-        </tr>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Employeur</th>
+            <th>Salaire Mensuel</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mohammed Alami</td>
+            <td>Tech Solutions SARL</td>
+            <td>8 000,00 DH</td>
+            <td><button id="mo">Modifier le Salaire</button></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Fatima Zahra Bennani</td>
+            <td>Tech Solutions SARL</td>
+            <td>6 500,00 DH</td>
+            <td><button id="mo">Modifier le Salaire</button></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Ahmed Tazi</td>
+            <td>Construction BTP</td>
+            <td>12 000,00 DH</td>
+            <td><button id="mo">Modifier le Salaire</button></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Khadija Mansouri</td>
+            <td>Construction BTP</td>
+            <td>5 500,00 DH</td>
+            <td><button id="mo">Modifier le Salaire</button></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Youssef Idrissi</td>
+            <td>Services Consulting</td>
+            <td>7 000,00 DH</td>
+            <td><button id="mo">Modifier le Salaire</button></td>
+          </tr>
+        </tbody>
       </table>
+
+      <div class="ajouterAssuré">
+        <div class="titreAjouter">
+          <h1>Ajouter un Assuré</h1>
+          <i class="fa-solid fa-x"></i>
+        </div>
+        <div class="formulaire">
+          <div>
+            <label for="">Nom Complet*</label>
+            <input class="Nom" type="text" />
+          </div>
+
+          <div>
+            <label for="">Employeur*</label>
+            <input
+              class="employer"
+              list="employeur"
+              placeholder="--Sélectionner un Employeur--"
+            />
+            <datalist id="employeur">
+              <option value="Tech Solutions SARL"></option>
+              <option value="Construction BTP"></option>
+              <option value="Services Consulting"></option>
+            </datalist>
+          </div>
+          <div>
+            <label for="">Salaire Menesuel(DH)*</label>
+            <input class="salaire" type="text" />
+          </div>
+        </div>
+        <div class="botton">
+          <button class="Annuler">Annuler</button>
+          <button class="ajot">Ajouter</button>
+        </div>
+      </div>
+      <div>
+        <form class="modifier">
+          <div class="titremodifier">
+            <h1>Ajouter un Assuré</h1>
+            <i class="fa-solid fa-x icons"></i>
+          </div>
+          <div class="formulaire">
+            <div>
+              <label for="">Nom Complet*</label>
+              <div id="nomAssure" class="Nom"></div>
+            </div>
+
+            <div>
+              <label for="">Salaire old*</label>
+              <div id="oldSalaire"></div>
+            </div>
+            <div>
+              <label for="">Salaire Menesuel(DH) New*</label>
+              <input id="newSalaire" type="numérique" />
+            </div>
+          </div>
+          <div class="botton">
+            <button class="Annul">Annuler</button>
+            <button class="Modifier">Modifier</button>
+          </div>
+        </form>
+      </div>
     </div>
 
   </div>
