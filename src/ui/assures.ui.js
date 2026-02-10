@@ -1,5 +1,6 @@
 import { createAssures, updateSalair } from "../services/assure.service.js";
 import { assures } from "../data/assures.js";
+import { findAssureById } from '../utils/helpers.js';
 
 const hidden = document.querySelector(".hidden");
 const ajout = document.getElementById("ajouter");
@@ -11,6 +12,8 @@ const modifier = document.querySelector(".modifier");
 const icons = document.querySelector(".icons");
 const anuul = document.querySelector(".Annul");
 
+ const newsalair=document.getElementById("newSalaire")
+
 let nom = document.querySelector(".Nom");
 let employeu = document.querySelector(".employer");
 let salair = document.querySelector(".salaire");
@@ -20,6 +23,9 @@ let id = 0;
 ajout.addEventListener("click", () => {
   ajouterAssuré.style.visibility = "visible";
   hidden.style.visibility = "visible";
+  nom.value = ""
+  employeu.value=""
+  salair.value=""
 });
 
 icon.addEventListener("click", () => {
@@ -51,35 +57,30 @@ ajouter.addEventListener("click", () => {
     return;
   } else {
     createAssures(name, salar, emp);
-    addToTable()
+    addToTable();
   }
 
-  modal()
+  modal();
 });
 
-
 function addToTable() {
-    const table = document.querySelector("table");
-    const tbody = document.querySelector('tbody');
+  const tbody = document.querySelector("tbody");
 
-    tbody.innerHTML = ""
+  tbody.innerHTML = "";
 
-
-    assures.forEach((el,i) => {
-    
+  assures.forEach((el, i) => {
     tbody.innerHTML += `
 
         <tr>
-          <td>${i}</td>
+          <td>${el.id}</td>
           <td>${el.name}</td>
-             <td>${el.employeurId}</td>
+          <td>${el.employeurId}</td>
           <td>${el.salaireMensuel}</td>
        
-          <td><button id="mo">Modifier le Salaire</button></td>
+          <td><button class="mo">Modifier le Salaire</button></td>
         </tr>
 `;
-
-   })
+  });
 }
 
 icons.addEventListener("click", () => {
@@ -93,38 +94,54 @@ anuul.addEventListener("click", (e) => {
   hidden.style.visibility = "hidden";
 });
 
+
+// modif
 function modal() {
-  let mo = document.querySelectorAll("#mo");
-const Modifier = document.querySelector(".Modifier");
+  let mo = document.querySelectorAll(".mo");
+  const Modifier = document.querySelector(".Modifier");
 
-let assu;
+  let assu;
 
-mo.forEach((el) => {
-  el.addEventListener("click", (e) => {
-    console.log(el)
-    let x = e.target.parentElement.parentElement.children[0];
-     assu = assures[Number(x.innerHTML)];
+  mo.forEach((el) => {
+    el.addEventListener("click", (e) => {
+      
+      let x = e.target.parentElement.parentElement.children[0];
+      
+      assu = findAssureById(Number(x.innerHTML));
 
-    let nomAssure = document.getElementById('nomAssure');
-    let oldSalaire = document.getElementById('oldSalaire');
+      let nomAssure = document.getElementById("nomAssure");
+      let oldSalaire = document.getElementById("oldSalaire");
+console.log(assu);
+      nomAssure.innerHTML = assu.name;
+      oldSalaire.innerHTML = assu.salaireMensuel;
 
-    nomAssure.innerHTML = assu.name;
-    oldSalaire.innerHTML = assu.salaireMensuel;
-
-    modifier.style.visibility = "visible";
-    hidden.style.visibility = "visible";
+      modifier.style.visibility = "visible";
+      hidden.style.visibility = "visible";
+    });
   });
-});
 
-Modifier.addEventListener("click", (e) => {
-  e.preventDefault()
-  const newSalaire = document.getElementById('newSalaire').value;
 
-  if(newSalaire.length == 0) return
+let nam = document.querySelector(".Nom").value;
+let employe = document.querySelector(".employer").value;
+let salairee = document.querySelector(".salaire").value;
 
-  updateSalair(assu.id, newSalaire)
-  addToTable()
-   modal()
-});
+
+  Modifier.addEventListener("click", (e) => {
+    e.preventDefault();
+    const newSalaire = document.getElementById("newSalaire").value;
+   
+
+    if (newSalaire.length == 0) return;
+
+    updateSalair(assu.id, newSalaire);
+    assu = {};
+    addToTable();
+    modal();
+  });
+  anuul.addEventListener("click",()=>{
+newsalair.value=""
+  })
+  // ajot.addEventListener("click",()=>{
+  //   nam.value=""
+  // })
 }
-
