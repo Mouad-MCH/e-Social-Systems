@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+
+@theme {
+    --color-primary: #2563EB;
+    --color-primary-hover: #2845D6;
+    --color-gray-backgound: #F5F7FB;
+    --color-success: #16A34A;
+    --color-danger: #DC2626;
+    --color-card: #FFFFFF;
+    --color-text: #111827;
+    --color-sidebar-bg: #ffffff;
+}
+
+
+@layer components {
+    .main_statistiques {
+        @apply flex items-center justify-between mb-10 mt-6;
+
+        & h1 {
+            @apply text-2xl font-bold;
+        }
+    }
+
+    .main_bottom {
+        @apply bg-white w-full h-fit rounded-lg shadow-sm ring ring-gray-300/5 p-5;
+    }
+
+
+    table {
+
+        
+        & thead {
+            @apply bg-gray-backgound h-15;
+        }
+
+        & tr:not(& thead tr) {
+            @apply text-center h-15 hover:bg-gray-300/10 transition-all duration-300 border-t border-gray-300;
+
+            & .detail {
+                @apply bg-gray-300 px-3 py-2 rounded-full hover:bg-gray-200 cursor-pointer transition-all duration-300;
+            }
+        }
+    }
+
+}   
