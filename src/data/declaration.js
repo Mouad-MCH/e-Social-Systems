@@ -1,4 +1,3 @@
-
 export const declarations = [
     {
         id: 12345357543,
