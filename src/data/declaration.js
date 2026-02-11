@@ -14,5 +14,12 @@ export const declarations = [
         ],
         month: "2026-01",
         declaredAt: '2026-02-10'
+    },
+        {
+        id: 12345357543,
+        employeurId: 1770288629315,
+        salaries: [499, 5000, 3000 ],
+        month: "2026-01",
+        declaredAt: '2026-02-10'
     }
 ];
