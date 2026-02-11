@@ -145,3 +145,5 @@ newsalair.value=""
   //   nam.value=""
   // })
 }
+addToTable()
+modal() 
