@@ -24,6 +24,7 @@ const addOnTable = () => {
     tbody.innerHTML = '';
 
     let data = obtenirTopEmployeur();
+    console.log("data: ", data )
     let emp = findEmployeurById(data.employeurId);
 
     tbody.innerHTML += `
