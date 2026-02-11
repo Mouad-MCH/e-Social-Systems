@@ -66,18 +66,18 @@ export const declarations = [
     month: "2026-01",
     declaredAt: "2026-02-05"
   },
-  {
-    id: 3,
-    employeurId: 1770288629315,
-    month: "2026-02",
-    salaries: [5300, 4900],
-    declaredAt: "2026-03-01"
-  },
-  {
-    id: 4,
-    employeurId: 3,
-    month: "2026-01",
-    salaries: [400, 400, 300],
-    declaredAt: "2026-02-20"
-  }
+  // {
+  //   id: 3,
+  //   employeurId: 1770288629315,
+  //   month: "2026-02",
+  //   salaries: [5300, 4900],
+  //   declaredAt: "2026-03-01"
+  // },
+  // {
+  //   id: 4,
+  //   employeurId: 3,
+  //   month: "2026-01",
+  //   salaries: [400, 400, 300],
+  //   declaredAt: "2026-02-20"
+  // }
 ];

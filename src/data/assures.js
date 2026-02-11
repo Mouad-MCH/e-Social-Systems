@@ -20,6 +20,20 @@ export const assures = [
         name: 'Adam',
         salaireMensuel: 3330,
         employeurId: 1770280009315
+    },
+
+    {
+        id: 1770281111222,
+        name: 'Omar',
+        salaireMensuel: 3330,
+        employeurId: 2
+    },
+
+    {
+        id: 1770282222222,
+        name: 'Hamid',
+        salaireMensuel: 3330,
+        employeurId: 2
     }
 
 ];

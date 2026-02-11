@@ -11,8 +11,8 @@ const salaire_moyeen = document.querySelector("#sal_moy_declarer");
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    montent_total.innerHTML = obtenirMontantTotal();
-    salaire_moyeen.innerHTML = obtenirSalaireMoyen();
+    montent_total.innerHTML = obtenirMontantTotal().toFixed(2);
+    salaire_moyeen.innerHTML = obtenirSalaireMoyen().toFixed(2);
     addOnTable()
 })
 
@@ -24,16 +24,14 @@ const addOnTable = () => {
     tbody.innerHTML = '';
 
     let data = obtenirTopEmployeur();
-    console.log("data: ", data )
     let emp = findEmployeurById(data.employeurId);
-    console.log("emp: ",emp)
 
     tbody.innerHTML += `
                     <tr>
                         <td>${emp.id}</td>
                         <td>${emp.raisonSociale}</td>
                         <td>${emp.secteur}</td>
-                        <td>${data.montantTotal} MAD</td>
+                        <td>${data.montantTotal.toFixed(2)} MAD</td>
                         <td>${emp.assures.length}</td>
                     </tr>
     
