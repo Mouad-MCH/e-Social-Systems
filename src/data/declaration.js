@@ -1,4 +1,3 @@
-// src/data/declaration.js
 
 export const declarations = [
   {
