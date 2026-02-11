@@ -1,4 +1,3 @@
-
 export const declarations = [
     {
         id: 12345357543,
@@ -6,11 +5,11 @@ export const declarations = [
         salaries: [
             {
                 assureId: 1770289179448,
-                saliar: 233
+                montant: 233
             },
             {
                 assureId: 1770289179222,
-                saliar: 2330
+                montant: 2330
             }
         ],
         month: "2026-01",
