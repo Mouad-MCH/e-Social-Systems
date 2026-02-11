@@ -24,8 +24,11 @@ export const creerDeclaration = (employeurId, mois, salaires, dateDeclaration) =
         return { erreur: "Salaires requis" };
     }
 
-    for(let salaire of salaires) {
-        const validationSalaire = validerSalaire(salaire);
+    for(let ligne of salaires) {
+        if (!ligne.assureId) {
+            return { erreur: "Assuré requis pour chaque salaire" };
+        }
+        const validationSalaire = validerSalaire(ligne.montant);
         if(!validationSalaire.valide) {
             return { erreur: validationSalaire.erreur };
         }
@@ -63,8 +66,8 @@ export const calculerTotalDeclaration = (declarationId) => {
     const declaration = declarations.find(d => d.id === declarationId);
     if(!declaration) return { erreur: "Declaration introuvable" };
 
-    const montantCotisations = declaration.salaries.reduce((sum, sal) =>
-        sum + calculerCotisationTotale(sal), 0
+    const montantCotisations = declaration.salaries.reduce((sum, ligne) =>
+        sum + calculerCotisationTotale(ligne.montant), 0
     );
 
     const resultat = calculerTotalAvecPenalite(
@@ -88,11 +91,12 @@ export const genererRecapitulatif = (declarationId) => {
     const declaration = declarations.find(d => d.id === declarationId);
     if(!declaration) return { erreur: "Declaration introuvable" };
 
-    const detailsSalaries = declaration.salaries.map(salaire => ({
-        salaire: salaire,
-        cotisationSalariale: calculerCotisationSalariale(salaire),
-        cotisationPatronale: calculerCotisationPatronale(salaire),
-        cotisationTotale: calculerCotisationTotale(salaire)
+    const detailsSalaries = declaration.salaries.map(ligne => ({
+        assureId: ligne.assureId,
+        salaire: ligne.montant,
+        cotisationSalariale: calculerCotisationSalariale(ligne.montant),
+        cotisationPatronale: calculerCotisationPatronale(ligne.montant),
+        cotisationTotale: calculerCotisationTotale(ligne.montant)
     }));
 
     const montantTotal = detailsSalaries.reduce((sum, d) => sum + d.cotisationTotale, 0);
@@ -122,8 +126,8 @@ export const obtenirTotalParEmployeur = (employeurId) => {
     if(declarationsEmployeur.length === 0) return 0;
 
     return declarationsEmployeur.reduce((total, decl) => {
-        const montantCotisations = decl.salaries.reduce((sum, sal) =>
-            sum + calculerCotisationTotale(sal), 0
+        const montantCotisations = decl.salaries.reduce((sum, ligne) =>
+            sum + calculerCotisationTotale(ligne.montant), 0
         );
         const resultat = calculerTotalAvecPenalite(montantCotisations, decl.declaredAt, decl.month);
         return total + resultat.total;
