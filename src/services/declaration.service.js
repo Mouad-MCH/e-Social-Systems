@@ -1,5 +1,6 @@
 import Declaration from "../models/Declaration.js";
 import { declarations } from "../data/declaration.js";
+import { assures } from "../data/assures.js";
 import { generateId } from "../utils/helpers.js";
 import { calculerCotisationTotale, calculerCotisationSalariale, calculerCotisationPatronale } from "./cotisation.service.js";
 import { calculerTotalAvecPenalite } from "./penalty.service.js";
@@ -27,6 +28,10 @@ export const creerDeclaration = (employeurId, mois, salaires, dateDeclaration) =
     for(let ligne of salaires) {
         if (!ligne.assureId) {
             return { erreur: "Assuré requis pour chaque salaire" };
+        }
+        const assure = assures.find(a => a.id === ligne.assureId);
+        if (!assure) {
+            return { erreur: `Assuré introuvable (ID: ${ligne.assureId})` };
         }
         const validationSalaire = validerSalaire(ligne.montant);
         if(!validationSalaire.valide) {
