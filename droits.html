@@ -4,10 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="src/assets/styles/sidebar.css">
   <link rel="stylesheet" href="src/assets/styles/droit.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
-  <div class="droits-container">
+
+
+<div class="body_sidebar">
+  <div class="sidebar">
+    <!-- sidebar Header -->
+     <div class="sidebar_header">
+      <div class="logo">
+        <img src="" alt="">
+      </div>
+      <div class="logo_name">
+        <h1>e-Social Systems</h1>
+        <p>Système de Gestion <br> des Cotisations Sociales</p>
+      </div>
+     </div>
+
+     <!-- Sidebar Bottom -->
+     <div class="sidebar-bottom">
+      <nav>
+        <a href="#dashboard" class="active">
+          <i class="fa-solid fa-table-columns"></i>
+          Tablue de bord
+        </a>
+
+        <a href="/employeur.html">
+          <i class="fa-regular fa-square-full"></i>
+          Employeur
+        </a>
+
+        <a href="/assures.html">
+          <i class="fa-solid fa-users"></i>
+          Assurés
+        </a>
+
+        <a href="/declarations.html">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          Déclarations
+        </a>
+
+        <a href="/droits.html">
+          <i class="fa-solid fa-circle-check"></i>
+          Droits Sociaux
+        </a>
+
+        <a href="/statistique.html">
+          <i class="fa-solid fa-chart-simple"></i>
+          Statistiques
+        </a>
+        
+      </nav>
+     </div>
+
+  </div>
+
+  <div class="main p-5">
+      <div class="droits-container">
   <h1>Consultation des Droits Sociaux</h1>
 
   <div class="droits-box">
@@ -15,14 +71,16 @@
     <!-- Select assuré -->
     <label class="label">Sélectionner un assuré</label>
     <select class="select">
-      <option>atima Zahra Bennani</option>
+      <option>Mohamed Alami</option>
       <option>Fatima Zahra Bennani</option>
-      <option>Fatima Zahra Bennani</option>
+      <option>Ahmed Tazi</option>
+      <option>Khadija Mansouri</option>
+      <option>Youssef Idrissi</option>
     </select>
 
     <!-- Assuré card -->
     <div class="assure-card">
-      <h2>Fatima Zahra Bennani</h2>
+      <h2></h2>
       <p class="company">Tech Solutions SARL</p>
 
       <div class="stats">
@@ -53,6 +111,10 @@
     </div>
 
   </div>
+  </div>
+</div>
+
+
 </div>
 
 </body>
