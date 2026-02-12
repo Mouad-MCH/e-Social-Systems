@@ -73,7 +73,7 @@ function detail(e) {
 
       let assuerAll = emp.assures.map(el => {
         let assure = findAssureById(el);
-        return `${assure.name} : ${assure.salaireMensuel} MAD`
+        return assure ? `${assure.name} : ${assure.salaireMensuel} MAD` : `Assuré introuvable (${el})`;
       }).join("\n  -")
 
       alert(`
