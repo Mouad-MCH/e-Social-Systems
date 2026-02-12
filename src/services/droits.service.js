@@ -4,27 +4,25 @@ import { calculerCotisationTotale } from "./cotisation.service.js";
 import { JOURS_VALIDATION_PAR_MOIS, JOURS_MIN_ELIGIBILITE } from "../utils/constants.js";
 
 export const obtenirMoisDeclares = (assureId) => {
-    const assure = assures.find(a => a.id === assureId);
-    if(!assure) return 0;
-
-    return declarations.filter(d =>
-        d.employeurId === assure.employeurId &&
-        d.salaries.length > 0
-    ).length;
+    let moisDeclares = 0;
+    declarations.forEach(declaration => {
+        if (declaration.salaries.some(s => s.assureId === assureId)) {
+            moisDeclares++;
+        }
+    });
+    return moisDeclares;
 };
 
 export const obtenirCotisationsTotales = (assureId) => {
-    const assure = assures.find(a => a.id === assureId);
-    if(!assure) return 0;
-
-    return declarations
-        .filter(d => d.employeurId === assure.employeurId)
-        .reduce((total, decl) => {
-            const cotisationDeclaration = decl.salaries.reduce((sum, salaire) =>
-                sum + calculerCotisationTotale(salaire), 0
-            );
-            return total + cotisationDeclaration;
-        }, 0);
+    let totalCotisations = 0;
+    declarations.forEach(declaration => {
+        declaration.salaries.forEach(salaire => {
+            if (salaire.assureId === assureId) {
+                totalCotisations += calculerCotisationTotale(salaire.montant);
+            }
+        });
+    });
+    return totalCotisations;
 };
 
 export const verifierEligibilite = (assureId) => {
@@ -39,19 +37,24 @@ export const verifierEligibilite = (assureId) => {
 
 export const consulterDroits = (assureId) => {
     const assure = assures.find(a => a.id === assureId);
-    if(!assure) return { erreur: "Assuré introuvable" };
+    if(!assure) return { erreur: "Assure non trouve" };
 
     const moisDeclares = obtenirMoisDeclares(assureId);
     const cotisationsTotales = obtenirCotisationsTotales(assureId);
     const eligibilite = verifierEligibilite(assureId);
 
-    const declarationsAssure = declarations.filter(d => d.employeurId === assure.employeurId);
-    const salaireMoyen = declarationsAssure.length > 0
-        ? declarationsAssure.reduce((sum, d) => {
-            const totalSalaires = d.salaries.reduce((s, sal) => s + sal, 0);
-            return sum + totalSalaires;
-        }, 0) / (declarationsAssure.reduce((count, d) => count + d.salaries.length, 0))
-        : assure.salaireMensuel;
+    let totalSalaires = 0;
+    let declarationsCount = 0;
+    declarations.forEach(declaration => {
+        declaration.salaries.forEach(salaire => {
+            if (salaire.assureId === assureId) {
+                totalSalaires += salaire.montant;
+                declarationsCount++;
+            }
+        });
+    });
+
+    const salaireMoyen = declarationsCount > 0 ? totalSalaires / declarationsCount : assure.salaireMensuel;
 
     return {
         assureId: assure.id,
