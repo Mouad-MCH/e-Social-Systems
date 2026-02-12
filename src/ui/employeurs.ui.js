@@ -70,7 +70,6 @@ function detail(e) {
     el.addEventListener("click", (e) => {
       let x = e.target.parentElement.parentElement.children[0];
       let emp = getEmployeur()[Number(x.innerHTML)];
-      console.log(emp)
 
       let assuerAll = emp.assures.map(el => {
         let assure = findAssureById(el);

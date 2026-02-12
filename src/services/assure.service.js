@@ -16,8 +16,6 @@ export const createAssures = (name,salaireMensuel, employeurId) => {
 }
 
 
-// function Update salair
-
 export const updateSalair = (assureId , newSalair) => {
     let assur = assures.find(a => a.id === assureId);
     

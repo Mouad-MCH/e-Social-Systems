@@ -111,7 +111,7 @@ function modal() {
 
       let nomAssure = document.getElementById("nomAssure");
       let oldSalaire = document.getElementById("oldSalaire");
-console.log(assu);
+
       nomAssure.innerHTML = assu.name;
       oldSalaire.innerHTML = assu.salaireMensuel;
 

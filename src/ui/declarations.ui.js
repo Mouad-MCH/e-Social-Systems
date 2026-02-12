@@ -151,7 +151,7 @@ const initDeclarations = () => {
 
     tbody.addEventListener('click', (e) => {
         if(e.target.classList.contains('detail')) {
-            const id = e.target.getAttribute('data-id');
+            const id = Number(e.target.getAttribute('data-id'));
             showDetailsModal(id);
         }
     });
