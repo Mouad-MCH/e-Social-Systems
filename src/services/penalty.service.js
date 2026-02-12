@@ -2,7 +2,7 @@ import { JOUR_ECHEANCE, TAUX_PENALITE_BASE, TAUX_PENALITE_MAX } from "../utils/c
 
 export const calculerJoursRetard = (dateDeclaration, mois) => {
     const [annee, moisNum] = mois.split('-');
-    const dateEcheance = new Date(annee, moisNum, JOUR_ECHEANCE);
+    const dateEcheance = new Date(annee, moisNum - 1, JOUR_ECHEANCE);
     const dateDecl = new Date(dateDeclaration);
 
     const diff = dateDecl - dateEcheance;

@@ -56,7 +56,11 @@ ajouter.addEventListener("click", () => {
     salair.style.border = "1px solid red ";
     return;
   } else {
-    createAssures(name, salar, emp);
+    const result = createAssures(name, Number(salar), Number(emp));
+    if (result.error) {
+      alert(result.error);
+      return;
+    }
     addToTable();
   }
 
@@ -111,7 +115,7 @@ function modal() {
 
       let nomAssure = document.getElementById("nomAssure");
       let oldSalaire = document.getElementById("oldSalaire");
-console.log(assu);
+
       nomAssure.innerHTML = assu.name;
       oldSalaire.innerHTML = assu.salaireMensuel;
 
