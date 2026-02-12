@@ -118,15 +118,37 @@ const closeDetailsModal = () => {
 }
 
 const handleSubmit = () => {
-    const employeurId = parseInt(employeurSelect.value);
+    const employeurId = Number(employeurSelect.value);
     const mois = document.querySelector("#mois").value;
     const salairesStr = document.querySelector("#salaires").value;
     const dateDeclaration = document.querySelector("#dateDeclaration").value;
 
-    const salaires = salairesStr.split(',').map(s => parseFloat(s.trim())).filter(s => !isNaN(s));
+    const montants = salairesStr.split(',').map(s => parseFloat(s.trim())).filter(s => !isNaN(s));
 
-    if(!employeurId || !mois || salaires.length === 0 || !dateDeclaration) {
+    if(!employeurId || !mois || montants.length === 0 || !dateDeclaration) {
         alert("Veuillez remplir tous les champs");
+        return;
+    }
+
+    const employeur = getEmployeur().find(e => e.id === employeurId);
+    if (!employeur || !employeur.assures || employeur.assures.length === 0) {
+        alert("Cet employeur n'a pas d'employés liés");
+        return;
+    }
+
+    const salaires = [];
+    // Map amounts to employees sequentially
+    employeur.assures.forEach((assureId, index) => {
+        if (index < montants.length) {
+            salaires.push({
+                assureId: assureId,
+                montant: montants[index]
+            });
+        }
+    });
+
+    if (salaires.length === 0) {
+        alert("Aucun salaire valide généré");
         return;
     }
 
