@@ -4,13 +4,13 @@ import { calculerCotisationTotale } from "./cotisation.service.js";
 import { JOURS_VALIDATION_PAR_MOIS, JOURS_MIN_ELIGIBILITE } from "../utils/constants.js";
 
 export const obtenirMoisDeclares = (assureId) => {
-    let moisDeclares = 0;
+    const moisUniques = new Set();
     declarations.forEach(declaration => {
         if (declaration.salaries.some(s => s.assureId === assureId)) {
-            moisDeclares++;
+            moisUniques.add(declaration.month);
         }
     });
-    return moisDeclares;
+    return moisUniques.size;
 };
 
 export const obtenirCotisationsTotales = (assureId) => {
