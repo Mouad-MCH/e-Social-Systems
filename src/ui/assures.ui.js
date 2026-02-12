@@ -56,7 +56,11 @@ ajouter.addEventListener("click", () => {
     salair.style.border = "1px solid red ";
     return;
   } else {
-    createAssures(name, Number(salar), Number(emp));
+    const result = createAssures(name, Number(salar), Number(emp));
+    if (result.error) {
+      alert(result.error);
+      return;
+    }
     addToTable();
   }
 
