@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayDroits = (assureId) => {
         const droits = consulterDroits(assureId);
         if (droits.erreur) {
-            assureName.textContent = 'Assuré non trouvé';
+            assureName.textContent = 'Assure non trouve';
             assureCompany.textContent = '';
             moisDeclaresStat.textContent = '0';
             joursValidationStat.textContent = '0';
