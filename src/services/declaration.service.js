@@ -1,5 +1,6 @@
 import Declaration from "../models/Declaration.js";
 import { declarations } from "../data/declaration.js";
+import { assures } from "../data/assures.js";
 import { generateId } from "../utils/helpers.js";
 import {
   calculerCotisationTotale,

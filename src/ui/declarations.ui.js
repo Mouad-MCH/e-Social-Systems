@@ -124,7 +124,7 @@ const closeDetailsModal = () => {
 }
 
 const handleSubmit = () => {
-    const employeurId = parseInt(employeurSelect.value);
+    const employeurId = Number(employeurSelect.value);
     const mois = document.querySelector("#mois").value;
     const dateDeclaration = document.querySelector("#dateDeclaration").value;
 

@@ -34,7 +34,7 @@ export const obtenirTopEmployeur = () => {
         }
     });
 
-    return { employeurId: topEmployeurId, montantTotal: maxCotisation };
+    return { employeurId: Number(topEmployeurId), montantTotal: maxCotisation };
 };
 
 
