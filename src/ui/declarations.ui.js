@@ -1,3 +1,4 @@
+import './layout/sidebar.js';
 import { creerDeclaration, obtenirDeclarations, genererRecapitulatif } from '../services/declaration.service.js';
 import { calculerTotalDeclaration } from '../services/declaration.service.js';
 import { getEmployeur } from '../services/employeur.service.js';

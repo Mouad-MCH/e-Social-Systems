@@ -26,7 +26,7 @@
             @apply flex items-center gap-2 mb-10 pb-10 border-b border-gray-400 cursor-pointer;
 
             & .logo {
-                @apply bg-red-200 w-15 h-15 rounded-lg overflow-hidden;
+                @apply w-15 h-15 rounded-lg overflow-hidden;
 
                 & img {
                     @apply w-full h-full;

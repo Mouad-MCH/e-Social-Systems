@@ -1,4 +1,4 @@
-
+import './layout/sidebar.js';
 import { createEmployeur, getEmployeur } from '../services/employeur.service.js';
 import { findAssureById } from '../utils/helpers.js';
 
