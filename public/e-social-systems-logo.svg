@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D47A1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1976D2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00C853;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00E676;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D47A1;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1565C0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1976D2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0D47A1" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Shield shape - social protection symbol -->
+  <g transform="translate(30, 16)" filter="url(#shadow)">
+    <!-- Shield body -->
+    <path d="M75 8 L140 30 L140 85 C140 125 110 155 75 170 C40 155 10 125 10 85 L10 30 Z" 
+          fill="url(#grad1)" stroke="none"/>
+    
+    <!-- Inner shield highlight -->
+    <path d="M75 20 L128 38 L128 85 C128 118 103 143 75 156 C47 143 22 118 22 85 L22 38 Z" 
+          fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+
+    <!-- People network icon inside shield -->
+    <!-- Central person -->
+    <circle cx="75" cy="68" r="10" fill="white" opacity="0.95"/>
+    <circle cx="75" cy="55" r="7" fill="white" opacity="0.95"/>
+    
+    <!-- Left person -->
+    <circle cx="48" cy="88" r="7" fill="url(#grad2)" opacity="0.9"/>
+    <circle cx="48" cy="78" r="5" fill="url(#grad2)" opacity="0.9"/>
+    
+    <!-- Right person -->
+    <circle cx="102" cy="88" r="7" fill="url(#grad2)" opacity="0.9"/>
+    <circle cx="102" cy="78" r="5" fill="url(#grad2)" opacity="0.9"/>
+    
+    <!-- Connection lines -->
+    <line x1="58" y1="80" x2="68" y2="70" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="92" y1="80" x2="82" y2="70" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="55" y1="86" x2="95" y2="86" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <!-- Checkmark at bottom of shield -->
+    <path d="M60 115 L72 127 L92 105" fill="none" stroke="#00E676" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Text: e-Social -->
+  <g transform="translate(185, 65)">
+    <!-- "e" with accent color -->
+    <text font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="56" font-weight="700" fill="#00C853" letter-spacing="-1">
+      e
+    </text>
+    <!-- Hyphen -->
+    <text x="33" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="56" font-weight="300" fill="#90A4AE">
+      -
+    </text>
+    <!-- "Social" -->
+    <text x="52" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="56" font-weight="700" fill="#0D47A1" letter-spacing="-1">
+      Social
+    </text>
+  </g>
+
+  <!-- Text: Systems -->
+  <text x="185" y="106" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="300" fill="#546E7A" letter-spacing="8">
+    SYSTEMS
+  </text>
+
+  <!-- Tagline -->
+  <line x1="185" y1="120" x2="540" y2="120" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="185" y="142" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#90A4AE" letter-spacing="2.5">
+    GESTION DES COTISATIONS SOCIALES
+  </text>
+
+  <!-- Decorative accent bar -->
+  <rect x="185" y="152" width="40" height="3" rx="1.5" fill="url(#grad2)"/>
+  <rect x="230" y="152" width="15" height="3" rx="1.5" fill="#0D47A1" opacity="0.3"/>
+</svg>

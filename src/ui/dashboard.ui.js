@@ -1,3 +1,4 @@
+import './layout/sidebar.js';
 import { employeurs } from "../data/employeurs.js";
 import { assures } from "../data/assures.js";
 import { declarations } from "../data/declaration.js";

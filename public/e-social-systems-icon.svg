@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D47A1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1976D2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00C853;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00E676;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0D47A1" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(25, 5)" filter="url(#shadow)">
+    <!-- Shield body -->
+    <path d="M75 8 L140 30 L140 85 C140 125 110 155 75 170 C40 155 10 125 10 85 L10 30 Z" 
+          fill="url(#grad1)" stroke="none"/>
+    
+    <!-- Inner shield highlight -->
+    <path d="M75 20 L128 38 L128 85 C128 118 103 143 75 156 C47 143 22 118 22 85 L22 38 Z" 
+          fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+
+    <!-- Central person -->
+    <circle cx="75" cy="68" r="10" fill="white" opacity="0.95"/>
+    <circle cx="75" cy="55" r="7" fill="white" opacity="0.95"/>
+    
+    <!-- Left person -->
+    <circle cx="48" cy="88" r="7" fill="url(#grad2)" opacity="0.9"/>
+    <circle cx="48" cy="78" r="5" fill="url(#grad2)" opacity="0.9"/>
+    
+    <!-- Right person -->
+    <circle cx="102" cy="88" r="7" fill="url(#grad2)" opacity="0.9"/>
+    <circle cx="102" cy="78" r="5" fill="url(#grad2)" opacity="0.9"/>
+    
+    <!-- Connection lines -->
+    <line x1="58" y1="80" x2="68" y2="70" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="92" y1="80" x2="82" y2="70" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="55" y1="86" x2="95" y2="86" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <!-- Checkmark -->
+    <path d="M60 115 L72 127 L92 105" fill="none" stroke="#00E676" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

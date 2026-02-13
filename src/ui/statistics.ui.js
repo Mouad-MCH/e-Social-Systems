@@ -1,4 +1,4 @@
-
+import './layout/sidebar.js';
 import { obtenirMontantTotal, obtenirTopEmployeur, obtenirSalaireMoyen } from "../services/statistics.service.js";
 import { findEmployeurById } from "../utils/helpers.js";
 
