@@ -2,6 +2,7 @@ import './layout/sidebar.js';
 import { creerDeclaration, obtenirDeclarations, genererRecapitulatif } from '../services/declaration.service.js';
 import { calculerTotalDeclaration } from '../services/declaration.service.js';
 import { getEmployeur } from '../services/employeur.service.js';
+import { getAssuresByEmployeur, getAssureById } from '../services/assure.service.js';
 
 const modal = document.querySelector(".modal");
 const detailsModal = document.getElementById("detailsModal");
@@ -87,17 +88,21 @@ const showDetailsModal = (id) => {
                 <table class="w-full text-sm text-left">
                     <thead>
                         <tr class="bg-gray-100">
+                            <th class="p-2">Assuré</th>
                             <th class="p-2">Salaire</th>
                             <th class="p-2">Cotisation</th>
                         </tr>
                     </thead>
                     <tbody>
-                        ${recap.detailsSalaries.map(d => `
+                        ${recap.detailsSalaries.map(d => {
+                            const assure = getAssureById(d.assureId);
+                            return `
                             <tr class="border-b">
+                                <td class="p-2">${assure ? assure.name : d.assureId}</td>
                                 <td class="p-2">${d.salaire} DH</td>
                                 <td class="p-2">${d.cotisationTotale.toFixed(2)} DH</td>
-                            </tr>
-                        `).join('')}
+                            </tr>`;
+                        }).join('')}
                     </tbody>
                 </table>
             </div>
@@ -121,15 +126,20 @@ const closeDetailsModal = () => {
 const handleSubmit = () => {
     const employeurId = parseInt(employeurSelect.value);
     const mois = document.querySelector("#mois").value;
-    const salairesStr = document.querySelector("#salaires").value;
     const dateDeclaration = document.querySelector("#dateDeclaration").value;
 
-    const salaires = salairesStr.split(',').map(s => parseFloat(s.trim())).filter(s => !isNaN(s));
-
-    if(!employeurId || !mois || salaires.length === 0 || !dateDeclaration) {
+    if(!employeurId || !mois || !dateDeclaration) {
         alert("Veuillez remplir tous les champs");
         return;
     }
+
+    const assuresEmployeur = getAssuresByEmployeur(employeurId);
+    if(assuresEmployeur.length === 0) {
+        alert("Aucun assuré trouvé pour cet employeur");
+        return;
+    }
+
+    const salaires = assuresEmployeur.map(a => ({ assureId: a.id, montant: a.salaireMensuel }));
 
     const result = creerDeclaration(employeurId, mois, salaires, dateDeclaration);
 
