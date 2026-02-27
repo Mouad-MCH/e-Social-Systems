@@ -40,13 +40,20 @@ export const updateSalair = (assureId, newSalair) => {
 
 
 export const linkEmployeurToAssure = (employeurId, assureId) => {
-    
     let emp = employeurs.find(e => e.id === employeurId);
     if(!emp) return { error: "Employeur non trouvé" };
 
     if(!emp.assures.includes(assureId)) emp.assures.push(assureId);
 
     return emp;
+}
+
+export const getAssuresByEmployeur = (employeurId) => {
+    return assures.filter(a => a.employeurId === employeurId);
+}
+
+export const getAssureById = (assureId) => {
+    return assures.find(a => a.id === assureId);
 }
 
 
